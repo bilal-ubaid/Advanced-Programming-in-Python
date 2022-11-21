@@ -1,0 +1,25 @@
+def tower_hanoi(n):
+    no_of_moves = 2**n-1 # no of min moves to solve the problem
+    moves = []           # every move taken to the goal
+    src = 'A'            # first pole or source pole
+    inter = 'B'          # intermediate or auxillary pole
+    dest = 'C'           # last pole or destination
+    
+    if n % 2==0:         # if number of discs are even
+        dest = 'B'       # swap dest and inter
+        inter = 'C'
+    
+    for i in range (1,no_of_moves+1):  # main loop to run
+        if i%3 == 1:                   
+            moves.append(src+dest)
+            print("Moving disc from ", src, "to", dest)
+        if i%3 == 2:
+            moves.append(src+inter)
+            print("Moving disc from ",src,"to", inter)
+        if i%3 == 0:
+            moves.append(dest+inter)
+            print("Moving disc from ",dest,"to",inter)
+            
+    return moves
+
+print(tower_hanoi(3))
